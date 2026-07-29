@@ -1,0 +1,18 @@
+# Keep project-specific Git SSH material out of version control.
+NLSW000003_id_ed25519_codex
+NLSW000003_id_ed25519_codex.pub
+
+# Local environment and operator-specific overrides.
+.env
+.env.*
+!.env.example
+
+# macOS / editor noise.
+.DS_Store
+.idea/
+.vscode/
+
+# Runtime data and local artifacts.
+tmp/
+logs/
+*.log
