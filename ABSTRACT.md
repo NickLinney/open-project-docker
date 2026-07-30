@@ -17,4 +17,4 @@ The stack favors:
 - governed release movement
 - documentation as code
 
-The MVP scope focuses on delivering a usable local OpenProject deployment with persistent PostgreSQL storage, operational scaffolding, and an optional Ollama runtime path for repository-side automation where LLM behavior is needed.
+The MVP scope now focuses on delivering a usable local OpenProject deployment with persistent PostgreSQL storage and operational scaffolding for a lean OpenProject-only baseline.

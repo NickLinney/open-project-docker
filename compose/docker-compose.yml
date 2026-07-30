@@ -5,7 +5,6 @@ networks:
 volumes:
   pgdata:
   opdata:
-  ollama:
 
 x-op-restart-policy: &restart_policy
   restart: unless-stopped
@@ -32,8 +31,6 @@ x-op-app: &op_app
     SECRET_KEY_BASE: "${SECRET_KEY_BASE}"
   volumes:
     - "${OPDATA:-opdata}:/var/openproject/assets"
-  extra_hosts:
-    - "host.docker.internal:host-gateway"
 
 services:
   db:
@@ -149,19 +146,3 @@ services:
         condition: service_healthy
     networks:
       - frontend
-
-  ollama:
-    image: ollama/ollama:latest
-    <<: *restart_policy
-    profiles:
-      - ollama-container
-    volumes:
-      - "${OLLAMA_DATA:-ollama}:/root/.ollama"
-    healthcheck:
-      test: ["CMD", "ollama", "list"]
-      interval: 15s
-      timeout: 10s
-      retries: 10
-      start_period: 30s
-    networks:
-      - backend

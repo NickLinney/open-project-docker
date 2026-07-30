@@ -2,7 +2,7 @@
 
 ## Scope
 
-Backup coverage for `pre-alpha-1` focuses on:
+Current validated backup coverage for `pre-alpha-2` focuses on:
 
 - PostgreSQL database contents
 
@@ -27,4 +27,4 @@ This is intentionally destructive to the target database and should be used only
 
 ## Validation Goal
 
-For `pre-alpha-1`, the validated backup path is database-only. Asset-export backup coverage remains future work and should not be assumed from the current scripts.
+For `pre-alpha-2`, the validated backup path remains database-only. Asset-export backup coverage remains future work and should not be assumed from the current scripts.
