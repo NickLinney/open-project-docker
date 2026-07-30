@@ -34,3 +34,4 @@ All notable changes to this repository will be documented here.
 - controlled backup and restore behavior
 - host and container Ollama mode behavior
 - Git remote and deploy-key authentication readiness
+- release evidence recorded in `docs/ValidationEvidence.md`

@@ -45,5 +45,6 @@
   "release_notes": {
     "pre_alpha_1_intent": "Validated learning-artifact cutoff for the optional Ollama subset on the macOS ARM64 implementation",
     "pre_alpha_2_intent": "Remove AI-related components and re-establish the lean OpenProject baseline before Alpha"
-  }
+  },
+  "validation_evidence_doc": "docs/ValidationEvidence.md"
 }

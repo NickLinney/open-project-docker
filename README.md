@@ -48,5 +48,6 @@ If `8080` is already in use on the host, set `PORT=127.0.0.1:<alternate-port>` i
 - The default web endpoint is `http://127.0.0.1:8080`.
 - The optional container Ollama runtime stays on the internal Compose network so it can coexist with a host Ollama daemon already using `127.0.0.1:11434`.
 - `pre-alpha-1` preserves the validated Ollama feature path as a learning artifact and export-package input; it should not be mistaken for the long-term baseline scope of this project.
+- Branch-contained validation evidence is recorded in `docs/ValidationEvidence.md`.
 - The optional proxy profile is documented but not required for first local bring-up.
 - The project lifecycle tracker is maintained outside the repository on purpose.
