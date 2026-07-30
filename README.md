@@ -2,11 +2,12 @@
 
 NickLinney.Software reference repository for a local-first, Docker-based OpenProject deployment with governed operations and persistent PostgreSQL storage.
 
-The current `pre-alpha-2` goal is the lean OpenProject baseline for `NLSW000003`. The earlier Ollama subset remains preserved only as historical `pre-alpha-1` learning evidence.
+The active `pre-alpha-2` release candidate is the lean OpenProject baseline for `NLSW000003`. The earlier Ollama subset remains preserved only as historical `pre-alpha-1` learning evidence.
 
 ## Status
 
 - Lifecycle phase: Pre-Alpha
+- Current release target: `0.0.0-pre-alpha-2`
 - Current release vehicle: `pre-alpha-2`
 - Current working branch: `feature/pre-alpha-2-lean-baseline`
 - Target milestone in this planning horizon: `pre-alpha-2`
@@ -41,5 +42,6 @@ If `8080` is already in use on the host, set `PORT=127.0.0.1:<alternate-port>` i
 - The default web endpoint is `http://127.0.0.1:8080`.
 - `pre-alpha-1` learning-artifact evidence remains in the repository for historical traceability, but the active product baseline is OpenProject-only.
 - Branch-contained validation evidence is recorded in `docs/ValidationEvidence.md`.
+- Release-readiness decision support is recorded in `docs/PreAlpha2ReleaseReadinessChecklist.md`.
 - The optional proxy profile is documented but not required for first local bring-up.
 - The project lifecycle tracker is maintained outside the repository on purpose.

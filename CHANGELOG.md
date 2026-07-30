@@ -4,15 +4,26 @@ All notable changes to this repository will be documented here.
 
 ## [Unreleased]
 
-### Added
+### Changed
 
-- Initial repository bootstrap
-- Project plan
-- Repository scaffolding
-- Compose architecture scaffold
-- Operational script scaffold
+- Release sprint work in progress pending governed PR review, merge, and tag for `0.0.0-pre-alpha-2`
 
-## [0.0.0-pre-alpha.1] - 2026-07-30
+## [0.0.0-pre-alpha-2] - 2026-07-30
+
+### Changed
+
+- Removed active Ollama and AI-related runtime scope from the Compose stack, tracked environment contract, operational scripts, and active operator-facing documentation
+- Realigned the repository to the lean OpenProject-only product baseline for `NLSW000003`
+- Updated release and validation materials to describe `pre-alpha-2` truthfully as a macOS ARM64 lean-baseline release
+
+### Validated
+
+- Lean OpenProject baseline on macOS ARM64 at `127.0.0.1:18080`
+- Install, health, backup, restore, update, and direct login reachability after warm-up
+- Final runtime state without an active Ollama service
+- Branch-contained release evidence recorded in `docs/ValidationEvidence.md` and `docs/PreAlpha2ReleaseReadinessChecklist.md`
+
+## [0.0.0-pre-alpha-1] - 2026-07-30
 
 ### Added
 
