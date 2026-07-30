@@ -19,7 +19,7 @@ fi
 
 compose_cmd "${profiles[@]}" ps
 
-openproject_url="http://${OPENPROJECT_HOST__NAME:-127.0.0.1:8080}"
+openproject_url="http://${PORT:-127.0.0.1:8080}"
 echo "Checking OpenProject health at $openproject_url/health_checks/default"
 curl -fsS "$openproject_url/health_checks/default" >/dev/null
 

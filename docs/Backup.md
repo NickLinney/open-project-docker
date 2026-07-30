@@ -2,10 +2,11 @@
 
 ## Scope
 
-Backup coverage for MVP focuses on:
+Backup coverage for `pre-alpha-1` focuses on:
 
 - PostgreSQL database contents
-- OpenProject persistent assets
+
+OpenProject assets are still persisted in the Docker volume mounted at `/var/openproject/assets`, but the current backup and restore scripts do not export or re-import that volume snapshot yet.
 
 ## Script Path
 
@@ -26,4 +27,4 @@ This is intentionally destructive to the target database and should be used only
 
 ## Validation Goal
 
-At alpha readiness, backup and restore guidance should match an actually exercised workflow rather than remaining theoretical.
+For `pre-alpha-1`, the validated backup path is database-only. Asset-export backup coverage remains future work and should not be assumed from the current scripts.

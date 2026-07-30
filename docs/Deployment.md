@@ -15,7 +15,7 @@ The stack is designed to start locally on `http://127.0.0.1:8080` without requir
 4. Run `./scripts/install.sh`.
 5. Run `./scripts/healthcheck.sh`.
 
-If host port `8080` is already occupied, change `PORT` in `.env` to another loopback binding such as `127.0.0.1:18080`.
+If host port `8080` is already occupied, change `PORT` in `.env` to another loopback binding such as `127.0.0.1:18080`, and update `OPENPROJECT_HOST__NAME` plus `COLLABORATIVE_SERVER_URL` to the same public host and port.
 
 ## Profiles
 

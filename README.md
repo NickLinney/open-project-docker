@@ -40,7 +40,7 @@ For `pre-alpha-1`, the optional Ollama subset is preserved as a validated learni
 4. Start the stack with `./scripts/install.sh`.
 5. Validate the deployment with `./scripts/healthcheck.sh`.
 
-If `8080` is already in use on the host, set `PORT=127.0.0.1:<alternate-port>` in `.env` before starting the stack.
+If `8080` is already in use on the host, set `PORT=127.0.0.1:<alternate-port>` in `.env` before starting the stack, and update `OPENPROJECT_HOST__NAME` plus `COLLABORATIVE_SERVER_URL` to the same public host and port.
 
 ## Notes
 

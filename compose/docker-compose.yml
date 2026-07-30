@@ -76,7 +76,6 @@ services:
   web:
     <<: *op_app
     command: "./docker/prod/web"
-    hostname: "${OPENPROJECT_HOST__NAME:-127.0.0.1:8080}"
     depends_on:
       db:
         condition: service_healthy
