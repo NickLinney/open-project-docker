@@ -1,0 +1,9 @@
+.git
+.env
+.env.*
+!.env.example
+backups/*.sql
+backups/*.dump
+logs/
+tmp/
+volumes/
