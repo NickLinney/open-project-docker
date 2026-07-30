@@ -19,7 +19,7 @@ OpenProject itself is not being modified here to become an LLM-native applicatio
 The LLM contract in this repository applies to repository-side automation and future support services that may need local model execution. Those surfaces default to `llama3:8b` and can run in one of two modes:
 
 - `LOCAL_MODEL=<model>` routes to a host Ollama instance
-- `CONTAINER_MODEL=<model>` runs Ollama in Docker and ensures the named model is present
+- `CONTAINER_MODEL=<model>` runs Ollama in Docker and ensures the named model is present without publishing a host port
 
 If neither variable is set, the repository defaults to in-container `llama3:8b`.
 
@@ -27,7 +27,8 @@ If neither variable is set, the repository defaults to in-container `llama3:8b`.
 
 - OpenProject binds to `127.0.0.1:8080` by default.
 - The stack runs on an internal Docker network for service-to-service traffic.
-- Host Ollama access uses `host.docker.internal` as the default bridge target.
+- Host Ollama access for repository-side scripts defaults to `127.0.0.1:11434` on the operator host.
+- If a future container-side consumer needs to reach host Ollama directly, `host.docker.internal` remains the expected bridge target.
 - A proxy profile is prepared for future hardened entrypoint work, but direct local access remains the MVP default.
 
 ## Persistence Model

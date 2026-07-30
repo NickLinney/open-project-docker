@@ -6,7 +6,7 @@ resolve_llm_mode() {
   local local_model="${LOCAL_MODEL:-}"
   local container_model="${CONTAINER_MODEL:-}"
   local default_model="${DEFAULT_LOCAL_MODEL:-llama3:8b}"
-  local host_base_url="${HOST_OLLAMA_BASE_URL:-http://host.docker.internal:11434}"
+  local host_base_url="${HOST_OLLAMA_BASE_URL:-http://127.0.0.1:11434}"
 
   if [[ -n "$local_model" && -n "$container_model" ]]; then
     echo "Set either LOCAL_MODEL or CONTAINER_MODEL, not both." >&2

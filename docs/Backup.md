@@ -13,7 +13,16 @@ Use `./scripts/backup.sh` to create a timestamped SQL backup in `backups/`.
 
 ## Restore Path
 
-Use `./scripts/restore.sh <backup.sql>` to restore the PostgreSQL database after confirming operator intent.
+Use `RESTORE_CONFIRM=YES ./scripts/restore.sh <backup.sql>` to restore the PostgreSQL database.
+
+Current restore behavior:
+
+- stops the application services before restore
+- drops and recreates the target database
+- loads the selected SQL backup
+- starts the application services again after restore
+
+This is intentionally destructive to the target database and should be used only for controlled recovery workflows.
 
 ## Validation Goal
 

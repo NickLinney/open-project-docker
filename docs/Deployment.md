@@ -21,7 +21,7 @@ If host port `8080` is already occupied, change `PORT` in `.env` to another loop
 
 - base stack: OpenProject, PostgreSQL, cache, seeder, worker, cron, hocuspocus
 - `proxy`: optional Caddy reverse proxy profile
-- `ollama-container`: optional local model runtime profile
+- `ollama-container`: optional local model runtime profile kept internal to the Compose network
 
 ## Notes
 

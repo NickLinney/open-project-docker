@@ -87,6 +87,54 @@ Deliver a production-quality, fully dockerized OpenProject deployment repository
 - In-container Ollama wiring via `CONTAINER_MODEL=`
 - Clear operator guidance for model selection and startup behavior
 
+## Delivery Model
+
+The project now operates with two parallel sprint cadences rendered as temporally simultaneous:
+
+- Development Team Sprint Cadence
+- Testing Team Sprint Cadence
+
+These cadences may be processed sequentially in practice, but they are governed as parallel sprint cycles sharing the same overall project timeline and release objective.
+
+The PM and Scrum Master participate across both cadences as the same project persons. This is intentional and acceptable. Development and Testing should remain deliberately lean to preserve signal quality, role clarity, and meeting efficiency.
+
+## Team Rosters
+
+### Shared Cross-Team Leadership
+
+- Project Sponsor: User / Project Owner
+- Project Manager and Meeting Chair: PM
+- Scrum Master: Scrum Master
+- Release Manager: Release Manager
+
+### Development Team Official Members
+
+- PM
+- Dev
+- Scrum Master
+- Release Manager
+
+### Testing Team Official Members
+
+- PM
+- QA / Validation Lead
+- Dev
+- Scrum Master
+- Release Manager
+
+### Testing Team Role Intent
+
+- PM
+  - owns test scope approval, milestone alignment, and exception review
+- QA / Validation Lead
+  - owns the test registry, test evidence completeness, pass/fail accounting, and test report discipline
+- Dev
+  - supports environment setup, defect diagnosis, retest execution, and technical remediation
+- Scrum Master
+  - owns testing cadence discipline, blocker surfacing, and stop-work enforcement where test governance is skipped
+- Release Manager
+  - owns release-gating interpretation, evidence sufficiency, and progression control toward `0.1.0-alpha`
+
 ## Milestones
 
 ### Milestone 1: Governance Bootstrap
@@ -120,6 +168,13 @@ Deliver a production-quality, fully dockerized OpenProject deployment repository
 - Document upgrade and disaster recovery flow
 - Validate stack behavior against intended bootstrap paths
 
+### Milestone 6: Dual-Cadence Alpha Evidence Closure
+
+- Run a governed Development Team sprint cadence
+- Run a governed Testing Team sprint cadence
+- Validate restore, Git auth/push, and Ollama operating modes
+- Produce release-readiness evidence for `0.1.0-alpha`
+
 ## Initial Risks
 
 - OpenProject image behavior and architecture support may impose constraints on ARM64 portability.
@@ -134,6 +189,209 @@ Deliver a production-quality, fully dockerized OpenProject deployment repository
 3. Define the Compose architecture and environment contract.
 4. Implement the Ollama configuration path for `LOCAL_MODEL` and `CONTAINER_MODEL`.
 5. Add operational scripts and validation guidance.
+
+## Current Planning Horizon
+
+The current planning horizon is the next governed sprint cycle and the sprint cycle immediately following it.
+
+These sprint cycles should prioritize:
+
+- alpha-entry evidence closure
+- governed testing discipline
+- release-readiness visibility
+
+Feature expansion not required for `0.1.0-alpha` readiness should remain out of scope until the current validation and evidence gaps are closed.
+
+## Development Team Parallel Sprint Cadence
+
+### Development Team Sprint 1
+
+#### Sprint Objective
+
+Close the engineering-side alpha-entry evidence gaps and support the Testing Team’s validation program without broadening scope.
+
+#### Tasks and Subtasks
+
+- Task 1: Conduct Development Team Sprint Planning Meeting
+  - Subtask: PM chairs the meeting under Robert’s Rules and checked gates.
+  - Subtask: PM reviews the current body of project artifacts with Development Team members.
+  - Subtask: Scrum Master records the planning meeting artifacts.
+  - Subtask: Release Manager confirms branch target and merge-intent constraints.
+  - Subtask: Dev confirms readiness to execute the bounded sprint scope.
+
+- Task 2: Prepare the sprint-scoped technical readiness checkpoint
+  - Subtask: Dev lists all remaining alpha-entry technical evidence gaps.
+  - Subtask: Release Manager maps those gaps to release significance.
+  - Subtask: PM approves the sprint scope as evidence-closure only.
+  - Subtask: Scrum Master records blockers, dependencies, and stop-work criteria.
+
+- Task 3: Execute and document the database restore drill
+  - Subtask: Dev selects the backup artifact or creates a fresh controlled backup if needed.
+  - Subtask: Dev defines the restore target conditions and validation criteria.
+  - Subtask: Dev executes the restore workflow.
+  - Subtask: Dev validates that the post-restore system returns to expected usable state.
+  - Subtask: Dev records restore evidence and notes any defects or documentation mismatches.
+
+- Task 4: Validate host Ollama mode using `LOCAL_MODEL=...`
+  - Subtask: Dev confirms host Ollama runtime availability.
+  - Subtask: Dev configures `.env` or equivalent validation input for `LOCAL_MODEL=...`.
+  - Subtask: Dev runs the relevant install and health paths.
+  - Subtask: Dev confirms the host mode is selected correctly and the host endpoint is reachable.
+  - Subtask: Dev records mode-selection evidence and any failures.
+
+- Task 5: Validate container Ollama mode using `CONTAINER_MODEL=...`
+  - Subtask: Dev configures `CONTAINER_MODEL=...` for controlled validation.
+  - Subtask: Dev starts the required profile and triggers model pull behavior if needed.
+  - Subtask: Dev confirms the container mode is selected correctly.
+  - Subtask: Dev confirms the model is available inside the Ollama container.
+  - Subtask: Dev records runtime evidence, timing observations, and defects if present.
+
+- Task 6: Validate remote Git push/auth path
+  - Subtask: Release Manager confirms the intended remote and auth method.
+  - Subtask: Dev uses the project-specific deploy key path for controlled Git auth validation.
+  - Subtask: Dev validates remote connectivity and push path according to approved scope.
+  - Subtask: Release Manager records whether the Git path is sufficient for release movement.
+
+- Task 7: Correct defects revealed by Development Team validation
+  - Subtask: Dev triages failures by severity and dependency order.
+  - Subtask: PM decides whether any defect requires sprint scope reprioritization.
+  - Subtask: Dev fixes high-priority blocking defects only.
+  - Subtask: Dev re-runs invalidated technical checks.
+  - Subtask: Scrum Master records any stop-work or scope-adjustment decisions.
+
+- Task 8: Close Development Team Sprint 1
+  - Subtask: PM prepares the Development Team PM Statement of Work Report for the sprint outcome.
+  - Subtask: PM, Dev, Scrum Master, and Release Manager each prepare individual sprint retrospective reports.
+  - Subtask: PM chairs the Development Team Sprint Retrospective Meeting.
+  - Subtask: PM prepares the Sprint Retrospective Meeting Findings and Conclusions Report.
+
+### Development Team Sprint 2
+
+#### Sprint Objective
+
+Convert validated technical evidence into release-ready operational and documentation alignment for `0.1.0-alpha` decision support.
+
+#### Tasks and Subtasks
+
+- Task 1: Conduct Development Team Sprint 2 Planning Meeting
+  - Subtask: PM reviews Sprint 1 findings and unresolved items.
+  - Subtask: Release Manager presents the current release-readiness gaps.
+  - Subtask: Scrum Master records conditions to proceed.
+  - Subtask: Dev confirms technical follow-up scope.
+
+- Task 2: Align repository documentation with validated behavior
+  - Subtask: Dev updates deployment documentation for proven runtime paths.
+  - Subtask: Dev updates operations documentation for backup/restore/update realities.
+  - Subtask: Dev updates architecture documentation for validated LLM mode behavior.
+  - Subtask: PM reviews documentation changes for operator clarity.
+
+- Task 3: Support creation of the `0.1.0-alpha` Release Readiness Checklist
+  - Subtask: Release Manager drafts the checklist criteria.
+  - Subtask: Dev maps technical validation evidence to checklist items.
+  - Subtask: PM reviews missing evidence and unresolved risks.
+  - Subtask: Scrum Master records any tabled matters or sponsor-escalation needs.
+
+- Task 4: Execute limited hardening or remediation tasks required by evidence gaps
+  - Subtask: Dev fixes only release-blocking issues revealed by Sprint 1 and Testing Team findings.
+  - Subtask: Dev re-runs affected validation paths.
+  - Subtask: Release Manager confirms whether the fixes are sufficient for checklist closure.
+
+- Task 5: Close Development Team Sprint 2
+  - Subtask: PM prepares the Development Team PM Statement of Work Report.
+  - Subtask: Each Development Team role prepares its sprint retrospective report.
+  - Subtask: PM chairs the Development Team Sprint Retrospective Meeting.
+  - Subtask: PM prepares the Sprint Retrospective Meeting Findings and Conclusions Report.
+
+## Testing Team Parallel Sprint Cadence
+
+### Testing Team Sprint 1
+
+#### Sprint Objective
+
+Execute the first formal evidence-building testing cycle against the current OpenProject stack using the project testing standard.
+
+#### Tasks and Subtasks
+
+- Task 1: Conduct Testing Team Sprint Planning Meeting
+  - Subtask: PM chairs the meeting under Robert’s Rules and checked gates.
+  - Subtask: PM reviews the full artifact body, including the testing strategy and recent retrospective outputs.
+  - Subtask: QA / Validation Lead presents the in-scope test registry items for the sprint.
+  - Subtask: Release Manager identifies which registry items are release-gating.
+  - Subtask: Scrum Master records meeting outputs, blockers, and stop-work criteria.
+
+- Task 2: Baseline the Testing Team test execution matrix
+  - Subtask: QA / Validation Lead selects the Sprint 1 in-scope test registry entries.
+  - Subtask: QA / Validation Lead maps each test to owner, environment, and evidence type.
+  - Subtask: PM approves the test scope.
+  - Subtask: Release Manager confirms which tests are required before release progression.
+
+- Task 3: Execute foundational and operational critical-path tests
+  - Subtask: QA / Validation Lead validates fresh compose render behavior.
+  - Subtask: QA / Validation Lead validates stack bring-up and service-state expectations.
+  - Subtask: QA / Validation Lead validates login reachability and operator usability checks.
+  - Subtask: QA / Validation Lead validates persistence across restart and recreation.
+  - Subtask: QA / Validation Lead validates backup workflow success.
+
+- Task 4: Execute recovery-path tests
+  - Subtask: QA / Validation Lead coordinates the restore drill with Dev support.
+  - Subtask: QA / Validation Lead validates post-restore usability and data expectations.
+  - Subtask: QA / Validation Lead records all recovery evidence and any failures.
+  - Subtask: Dev supports defect diagnosis where test failures occur.
+
+- Task 5: Execute configuration-path tests
+  - Subtask: QA / Validation Lead validates default local-first path behavior.
+  - Subtask: QA / Validation Lead validates alternate port override behavior.
+  - Subtask: QA / Validation Lead validates conflicting model-variable failure behavior.
+  - Subtask: QA / Validation Lead records mode and port-path evidence.
+
+- Task 6: Close Testing Team Sprint 1
+  - Subtask: QA / Validation Lead prepares the test execution summary for the sprint.
+  - Subtask: PM, QA / Validation Lead, Dev, Scrum Master, and Release Manager each prepare individual sprint retrospective reports.
+  - Subtask: PM chairs the Testing Team Sprint Retrospective Meeting.
+  - Subtask: PM prepares the Sprint Retrospective Meeting Findings and Conclusions Report.
+
+### Testing Team Sprint 2
+
+#### Sprint Objective
+
+Complete release-gating validation, documentation-path testing, and final evidence traceability for `0.1.0-alpha` readiness review.
+
+#### Tasks and Subtasks
+
+- Task 1: Conduct Testing Team Sprint 2 Planning Meeting
+  - Subtask: PM reviews Testing Team Sprint 1 findings and unresolved failures.
+  - Subtask: QA / Validation Lead presents the remaining release-gating registry items.
+  - Subtask: Release Manager confirms the minimum test evidence needed for readiness review.
+  - Subtask: Scrum Master records conditions to proceed.
+
+- Task 2: Execute LLM mode validation tests
+  - Subtask: QA / Validation Lead validates `LOCAL_MODEL=...` behavior in the host Ollama environment.
+  - Subtask: QA / Validation Lead validates `CONTAINER_MODEL=...` behavior in the container Ollama environment.
+  - Subtask: QA / Validation Lead validates the neither-variable-set default behavior.
+  - Subtask: Dev supports diagnosis of mode-resolution or runtime failures.
+
+- Task 3: Execute Git/release-path tests
+  - Subtask: QA / Validation Lead validates the Git remote push/auth path using approved workflow.
+  - Subtask: Release Manager confirms that the path is acceptable for release progression.
+  - Subtask: QA / Validation Lead records evidence and any unresolved risks.
+
+- Task 4: Execute documentation-path validation
+  - Subtask: QA / Validation Lead follows deployment documentation literally in the approved environment.
+  - Subtask: QA / Validation Lead follows recovery documentation literally in the approved environment.
+  - Subtask: QA / Validation Lead records mismatches between docs and actual operator experience.
+  - Subtask: PM classifies any documentation mismatches as release-blocking or non-blocking.
+
+- Task 5: Build release-evidence traceability package
+  - Subtask: QA / Validation Lead maps executed tests to release-readiness criteria.
+  - Subtask: Release Manager confirms that each release claim has evidence or explicit exception.
+  - Subtask: PM reviews open risks, deferrals, and unresolved test failures.
+  - Subtask: Scrum Master records any required sponsor escalations or tabled matters.
+
+- Task 6: Close Testing Team Sprint 2
+  - Subtask: QA / Validation Lead prepares the sprint test evidence summary.
+  - Subtask: Each Testing Team role prepares its sprint retrospective report.
+  - Subtask: PM chairs the Testing Team Sprint Retrospective Meeting.
+  - Subtask: PM prepares the Sprint Retrospective Meeting Findings and Conclusions Report.
 
 ## Tracking Note
 
