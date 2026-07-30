@@ -6,9 +6,9 @@
 - Project SID: NLSW-000003
 - Plan Date: 2026-07-29
 - Current Lifecycle Phase: Pre-Alpha
-- Current Release Vehicle: `pre-alpha-1`
-- Current Release Target: `pre-alpha-1`
-- Current Top-Level Feature Vehicle: `feature/release-bootstrap`
+- Current Release Vehicle: `pre-alpha-2`
+- Current Release Target: `pre-alpha-2`
+- Current Top-Level Feature Vehicle: `feature/pre-alpha-2-lean-baseline`
 - Repository Intent: Canonical, Docker-first, self-hosted OpenProject deployment reference
 
 ## Executive Objective
@@ -32,11 +32,7 @@ The planning response is:
 - The stack launches through Docker-first workflows without host-side app installation requirements.
 - OpenProject state is externalized from containers and survives container replacement.
 - Documentation covers deployment, operations, backup, restore, and security expectations.
-- LLM-dependent automation defaults to `llama3:8b`.
-- The runtime supports either:
-  - host Ollama access when `LOCAL_MODEL=` is provided
-  - in-container Ollama execution when `CONTAINER_MODEL=` is provided
-- MVP avoids cloud-model dependencies and avoids LLM toolchains that are incompatible with Ollama.
+- The active product baseline remains OpenProject-only and excludes AI-related runtime components.
 
 ## Scope
 
@@ -50,12 +46,11 @@ The planning response is:
 - Backup and restore workflow design
 - Multi-architecture support planning for AMD64 and ARM64
 - Repository documentation and governance scaffolding
-- Ollama integration pattern for local or in-container inference
 
 ### Out of Scope for MVP
 
 - Cloud LLM providers
-- Non-Ollama LLM tool integrations
+- AI-related runtime integrations in the active product baseline
 - Enterprise SSO and directory integrations
 - Production Kubernetes orchestration
 - Advanced observability stack beyond basic health and operational guidance
@@ -99,12 +94,10 @@ The planning response is:
 - Health-check and validation approach
 - Disaster recovery notes
 
-### Learning Artifact Foundation for `pre-alpha-1`
+### Historical Learning Artifact Foundation for `pre-alpha-1`
 
-- Default `llama3:8b` model behavior
-- Host Ollama wiring via `LOCAL_MODEL=`
-- In-container Ollama wiring via `CONTAINER_MODEL=`
-- Clear operator guidance for model selection and startup behavior
+- Retained historical evidence for the discontinued Ollama subset
+- Historical exportability of the `pre-alpha-1` learning artifact
 
 ## Delivery Model
 
@@ -175,11 +168,10 @@ The PM and Scrum Master participate across both cadences as the same project per
 - Select OpenProject image strategy
 - Define reverse proxy approach and security defaults
 
-### Milestone 4: LLM Integration Pattern
+### Milestone 4: Historical Learning Artifact Preservation
 
-- Specify the Ollama service interaction model
-- Implement host-vs-container model selection logic
-- Document operator-facing environment variables
+- Preserve validated `pre-alpha-1` learning evidence without treating it as the active baseline
+- Export or reference discontinued feature-path learning truthfully
 
 ### Milestone 5: Operations Readiness
 
@@ -191,7 +183,7 @@ The PM and Scrum Master participate across both cadences as the same project per
 
 - Run a governed Development Team sprint cadence
 - Run a governed Testing Team sprint cadence
-- Validate restore, Git auth/push, and Ollama operating modes
+- Validate restore, Git auth/push, and the historical learning-artifact subset
 - Produce release-readiness evidence for `pre-alpha-1`
 
 ### Milestone 7: Pre-Alpha 2 Lean Product Realignment
@@ -203,8 +195,6 @@ The PM and Scrum Master participate across both cadences as the same project per
 ## Initial Risks
 
 - OpenProject image behavior and architecture support may impose constraints on ARM64 portability.
-- Running Ollama in-container may materially increase startup time and resource expectations when large models are pulled.
-- Host Ollama integration needs careful network and endpoint handling to remain portable across Linux and macOS.
 - Reverse proxy and TLS choices should avoid accidental over-design during MVP bootstrap.
 
 ## Immediate Next Actions
@@ -212,8 +202,8 @@ The PM and Scrum Master participate across both cadences as the same project per
 1. Bootstrap the Git repository and branch topology.
 2. Create the initial repository skeleton and core docs.
 3. Define the Compose architecture and environment contract.
-4. Implement the Ollama configuration path for `LOCAL_MODEL` and `CONTAINER_MODEL`.
-5. Add operational scripts and validation guidance.
+4. Remove AI-related components from the active product baseline for `pre-alpha-2`.
+5. Revalidate the lean operational baseline and release evidence.
 
 ## Current Planning Horizon
 
@@ -257,19 +247,16 @@ Close the engineering-side alpha-entry evidence gaps and support the Testing Tea
   - Subtask: Dev validates that the post-restore system returns to expected usable state.
   - Subtask: Dev records restore evidence and notes any defects or documentation mismatches.
 
-- Task 4: Validate host Ollama mode using `LOCAL_MODEL=...`
-  - Subtask: Dev confirms host Ollama runtime availability.
-  - Subtask: Dev configures `.env` or equivalent validation input for `LOCAL_MODEL=...`.
-  - Subtask: Dev runs the relevant install and health paths.
-  - Subtask: Dev confirms the host mode is selected correctly and the host endpoint is reachable.
-  - Subtask: Dev records mode-selection evidence and any failures.
+- Task 4: Remove active AI runtime components from the product baseline
+  - Subtask: Dev removes Compose, script, and environment-variable surfaces tied to the discontinued AI subset.
+  - Subtask: Dev confirms no active operator path still depends on Ollama-specific behavior.
+  - Subtask: Dev records the exact removed surfaces in a sprint-scoped artifact.
+  - Subtask: Release Manager confirms the change aligns with the current release target.
 
-- Task 5: Validate container Ollama mode using `CONTAINER_MODEL=...`
-  - Subtask: Dev configures `CONTAINER_MODEL=...` for controlled validation.
-  - Subtask: Dev starts the required profile and triggers model pull behavior if needed.
-  - Subtask: Dev confirms the container mode is selected correctly.
-  - Subtask: Dev confirms the model is available inside the Ollama container.
-  - Subtask: Dev records runtime evidence, timing observations, and defects if present.
+- Task 5: Revalidate the lean operational baseline after removal
+  - Subtask: Dev runs the relevant install and health paths after removal.
+  - Subtask: Dev confirms the stack remains usable without AI-related runtime components.
+  - Subtask: Dev records any regressions, timing observations, and corrective actions if present.
 
 - Task 6: Validate remote Git push/auth path
   - Subtask: Release Manager confirms the intended remote and auth method.
@@ -294,7 +281,7 @@ Close the engineering-side alpha-entry evidence gaps and support the Testing Tea
 
 #### Sprint Objective
 
-Convert validated technical evidence into release-ready operational and documentation alignment for `pre-alpha-1` decision support.
+Convert validated technical evidence into release-ready operational and documentation alignment for `pre-alpha-2` decision support.
 
 #### Tasks and Subtasks
 
@@ -307,10 +294,10 @@ Convert validated technical evidence into release-ready operational and document
 - Task 2: Align repository documentation with validated behavior
   - Subtask: Dev updates deployment documentation for proven runtime paths.
   - Subtask: Dev updates operations documentation for backup/restore/update realities.
-  - Subtask: Dev updates architecture documentation for validated LLM mode behavior.
+  - Subtask: Dev updates architecture documentation for the lean OpenProject-only baseline.
   - Subtask: PM reviews documentation changes for operator clarity.
 
-- Task 3: Support creation of the `pre-alpha-1` Release Readiness Checklist
+- Task 3: Support creation of the `pre-alpha-2` Release Readiness Checklist
   - Subtask: Release Manager drafts the checklist criteria.
   - Subtask: Dev maps technical validation evidence to checklist items.
   - Subtask: PM reviews missing evidence and unresolved risks.
@@ -379,7 +366,7 @@ Execute the first formal evidence-building testing cycle against the current Ope
 
 #### Sprint Objective
 
-Complete release-gating validation, documentation-path testing, and final evidence traceability for `pre-alpha-1` readiness review.
+Complete release-gating validation, documentation-path testing, and final evidence traceability for `pre-alpha-2` readiness review.
 
 #### Tasks and Subtasks
 
@@ -389,11 +376,10 @@ Complete release-gating validation, documentation-path testing, and final eviden
   - Subtask: Release Manager confirms the minimum test evidence needed for readiness review.
   - Subtask: Scrum Master records conditions to proceed.
 
-- Task 2: Execute LLM mode validation tests
-  - Subtask: QA / Validation Lead validates `LOCAL_MODEL=...` behavior in the host Ollama environment.
-  - Subtask: QA / Validation Lead validates `CONTAINER_MODEL=...` behavior in the container Ollama environment.
-  - Subtask: QA / Validation Lead validates the neither-variable-set default behavior.
-  - Subtask: Dev supports diagnosis of mode-resolution or runtime failures.
+- Task 2: Execute lean-baseline regression tests
+  - Subtask: QA / Validation Lead validates that active deployment guidance no longer depends on AI-specific configuration.
+  - Subtask: QA / Validation Lead validates that removed AI runtime surfaces do not remain in active operator paths.
+  - Subtask: Dev supports diagnosis of residual configuration or runtime failures.
 
 - Task 3: Execute Git/release-path tests
   - Subtask: QA / Validation Lead validates the Git remote push/auth path using approved workflow.

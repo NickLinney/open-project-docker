@@ -4,7 +4,7 @@
 **SID:** NLSW-000003  
 **Document Class:** Project Document  
 **Status:** Active  
-**Version:** pre-alpha-1  
+**Version:** pre-alpha-2  
 **Effective Date:** Thursday, July 30, 2026  
 **Authority:** This document is a project-specific testing standard for NLSW-000003 and should be followed unless new evidence justifies a documented exception.
 
@@ -63,10 +63,10 @@ This testing strategy is designed to answer the following questions:
 2. Is OpenProject usable after deployment?
 3. Is PostgreSQL persistence real and durable across lifecycle events?
 4. Are install, backup, restore, update, and health workflows correct?
-5. Does the system behave correctly across configuration states?
-6. Do local LLM mode paths behave as designed?
-7. Can the system be recovered after expected operational events?
-8. Is the release evidence strong enough to support progression toward `pre-alpha-1`?
+5. Does the system behave correctly across documented configuration states?
+6. Can the system be recovered after expected operational events?
+7. Are stale claims from the discontinued AI subset fully removed or clearly historical?
+8. Is the release evidence strong enough to support progression toward `pre-alpha-2`?
 
 ---
 
@@ -83,15 +83,13 @@ This testing strategy is designed to answer the following questions:
 - Update workflow
 - Healthcheck workflow
 - Local port override behavior
-- Host Ollama mode via `LOCAL_MODEL=`
-- In-container Ollama mode via `CONTAINER_MODEL=`
 - Git remote push/auth path using the project deploy key
 - Documentation-path validation for the operator workflow
 
 ### Out of Scope For Current Horizon
 
 - Cloud LLM providers
-- Non-Ollama-compatible toolchains
+- Historical AI-subset behavior beyond preserved `pre-alpha-1` evidence
 - Enterprise SSO integrations
 - Performance benchmarking at scale
 - Penetration testing beyond baseline security validation
@@ -115,7 +113,7 @@ Examples:
 - recovery after teardown
 - backup then restore
 - switch to alternate port
-- switch between LLM modes
+- compare historical `pre-alpha-1` claims against the current lean baseline
 
 ### 5.2 State Modeling
 
@@ -126,8 +124,7 @@ Examples:
 - no stack -> fresh deploy
 - running -> restart
 - running -> down -> recreate
-- configured for host Ollama -> validated host mode
-- configured for container Ollama -> validated container mode
+- pre-alpha-1 learning artifact -> pre-alpha-2 lean baseline
 - backup available -> restore executed
 
 ### 5.3 Risk Modeling
@@ -170,31 +167,6 @@ Characteristics:
 - fresh checkout or isolated worktree
 - no reliance on hidden state
 
-### E3 - Host Ollama Environment
-
-Purpose:
-
-- validate `LOCAL_MODEL=...`
-
-Characteristics:
-
-- host Ollama service running
-- known model availability
-- reachable host bridge endpoint
-
-### E4 - Container Ollama Environment
-
-Purpose:
-
-- validate `CONTAINER_MODEL=...`
-
-Characteristics:
-
-- in-container Ollama profile enabled
-- model pull executed if needed
-
----
-
 ## 7. Release Gates And Test Levels
 
 ### Level A - Foundational Validation
@@ -221,13 +193,11 @@ Required before claiming the stack honors its documented contract:
 
 - default local-first configuration works
 - alternate host port override works
-- `LOCAL_MODEL=...` path works
-- `CONTAINER_MODEL=...` path works
-- invalid or conflicting mode configuration fails clearly
+- stale AI-related config expectations are removed from active operator guidance
 
 ### Level D - Release Validation
 
-Required before claiming readiness for `0.1.0-alpha`:
+Required before claiming readiness for `pre-alpha-2`:
 
 - remote push/auth path validated
 - release checklist completed
@@ -596,72 +566,73 @@ The following registry defines the proactive test inventory required for this pr
   - compose ps port summary
   - reachable login path on alternate port
 
-### TR-013 LOCAL_MODEL Host Mode
+### TR-013 Active Config Surface Truthfulness
 
 - Priority: `P0`
 - Type: `CFG`
 - Scenario:
-  - Operator sets `LOCAL_MODEL=...` and uses host Ollama.
+  - Operator follows the active `pre-alpha-2` configuration contract.
 - Start State:
-  - host Ollama running
-  - model available or pullable by host workflow
+  - current branch checked out
+  - active docs available
 - Action:
-  - configure host mode
-  - execute install/health path
+  - inspect active environment, Compose, and script inputs
 - Expected Result:
-  - scripts resolve host mode correctly
-  - host endpoint check succeeds
+  - no active operator path requires AI-specific configuration variables
+  - removed variables are absent from the active contract
 - Evidence:
-  - script output
-  - host Ollama health evidence
+  - config inspection notes
+  - active file excerpts
 
-### TR-014 CONTAINER_MODEL Container Mode
+### TR-014 Lean Baseline Bring-Up After Feature Removal
 
 - Priority: `P0`
 - Type: `CFG`
 - Scenario:
-  - Operator sets `CONTAINER_MODEL=...` and uses in-container Ollama.
+  - Operator starts the stack after AI-related component removal.
 - Start State:
-  - container mode chosen
+  - current lean baseline worktree
 - Action:
-  - start stack including Ollama profile
-  - perform model pull if missing
+  - execute install and health workflows
 - Expected Result:
-  - scripts resolve container mode correctly
-  - model is available in container
+  - stack starts successfully without Ollama-related runtime components
+  - no script fails due to removed AI-specific paths
 - Evidence:
   - install output
-  - `ollama list` evidence
+  - healthcheck output
 
-### TR-015 Neither Model Variable Set
-
-- Priority: `P1`
-- Type: `CFG`
-- Scenario:
-  - Operator sets neither `LOCAL_MODEL` nor `CONTAINER_MODEL`.
-- Start State:
-  - unset model variables
-- Action:
-  - execute install/health path
-- Expected Result:
-  - system defaults to container `llama3:8b` mode as documented
-- Evidence:
-  - script mode summary
-
-### TR-016 Conflicting Model Variables
+### TR-015 Historical Artifact Boundary Integrity
 
 - Priority: `P1`
 - Type: `CFG`
 - Scenario:
-  - Operator sets both `LOCAL_MODEL` and `CONTAINER_MODEL`.
+  - Historical `pre-alpha-1` evidence remains in the repository.
 - Start State:
-  - conflicting env configuration
+  - current branch checked out
 - Action:
-  - execute mode resolution path
+  - compare active operator docs against preserved historical artifacts
 - Expected Result:
-  - system fails clearly and does not continue ambiguously
+  - historical AI-subset material is clearly preserved as past evidence
+  - active baseline docs do not present historical behavior as current scope
 - Evidence:
-  - script error output
+  - comparison notes
+  - historical-vs-active artifact references
+
+### TR-016 Removed Runtime Surface Verification
+
+- Priority: `P1`
+- Type: `CFG`
+- Scenario:
+  - Operator validates that the discontinued AI runtime surface is no longer active.
+- Start State:
+  - current lean baseline worktree
+- Action:
+  - inspect Compose services, scripts, and active environment contract
+- Expected Result:
+  - no active Ollama service, profile, or mode-resolution dependency remains
+- Evidence:
+  - compose/service inspection notes
+  - script inspection notes
 
 ### TR-017 Git Remote Push/Auth Path
 

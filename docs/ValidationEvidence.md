@@ -1,8 +1,113 @@
 # Validation Evidence
 
-## Context
+## Pre-Alpha 2 Context
 
-This document records the branch-contained validation evidence for `pre-alpha-1` on Thursday, July 30, 2026.
+This section records the branch-contained validation evidence for `pre-alpha-2` on Thursday, July 30, 2026.
+
+Validation host:
+
+- local MacBook Pro Apple Silicon workstation
+- macOS ARM64
+- Docker Desktop runtime
+
+Evidence boundary notes:
+
+- Validation was executed on `feature/pre-alpha-2-lean-baseline`.
+- The active validation endpoint remained `http://127.0.0.1:18080` because host port `127.0.0.1:8080` was already occupied on this device.
+- The local operator `.env` file still contained historical AI-related variables from `pre-alpha-1`, but the active tracked contract no longer depends on them and the runtime scripts ignored them during validation.
+- Linux and AMD64 validation remain deferred and are tracked separately as later-phase work.
+
+## Pre-Alpha 2 Validated Items
+
+### 1. Lean Runtime Surface Realignment
+
+- Date: Thursday, July 30, 2026
+- Environment: repository worktree and active Compose contract
+- Result: passed
+
+Validation notes:
+
+- Active Compose, script, and environment-contract surfaces tied to the discontinued Ollama subset were removed.
+- Historical AI-subset material remains preserved only as `pre-alpha-1` evidence and learning-artifact context.
+- No active operator guidance now presents Ollama as current product scope.
+
+### 2. Clean Runtime Bring-Up Without Orphans
+
+- Date: Thursday, July 30, 2026
+- Environment: primary local stack
+- Result: passed
+
+Validation notes:
+
+- A leftover `compose-ollama-1` container from the earlier phase was detected before validation.
+- The stack was cycled with orphan removal so `pre-alpha-2` validation would run against a clean runtime.
+- The rebuilt stack started successfully without any active Ollama service.
+
+### 3. Base Stack Runtime
+
+- Date: Thursday, July 30, 2026
+- Environment: primary local stack
+- Public endpoint: `http://127.0.0.1:18080`
+- Result: passed
+
+Validation notes:
+
+- OpenProject services reached healthy state.
+- `bash scripts/healthcheck.sh` completed successfully on the lean baseline.
+- A direct `/login` probe returned `HTTP/1.1 200 OK` once the stack completed normal warm-up.
+
+### 4. Controlled Database Backup and Restore
+
+- Date: Thursday, July 30, 2026
+- Environment: primary local stack
+- Result: passed
+
+Validation notes:
+
+- Timestamped PostgreSQL backup creation succeeded.
+- Controlled restore with `RESTORE_CONFIRM=YES` succeeded using the fresh backup artifact created during validation.
+- Post-restore health validation succeeded after normal service warm-up.
+- Current validated backup scope for `pre-alpha-2` remains database-only.
+
+### 5. Update Workflow
+
+- Date: Thursday, July 30, 2026
+- Environment: primary local stack
+- Result: passed
+
+Validation notes:
+
+- `bash scripts/update.sh` completed successfully on the lean baseline after the removal work.
+
+### 6. Final Runtime State Snapshot
+
+- Date: Thursday, July 30, 2026
+- Environment: primary local stack
+- Result: passed
+
+Validation notes:
+
+- Running services at evidence capture: `db`, `cache`, `web`, `worker`, `cron`, `hocuspocus`
+- No active Ollama service remained in the Compose runtime.
+- Web remained bound to `127.0.0.1:18080->8080/tcp`.
+
+## Not Yet Validated for `pre-alpha-2`
+
+- Default public binding on `127.0.0.1:8080` on this specific workstation
+- Linux host runtime
+- AMD64 host runtime
+- Asset-export backup and restore beyond Docker volume persistence
+- Release promotion via PR review and merge for the `pre-alpha-2` branch
+
+## Pre-Alpha 2 Evidence Interpretation
+
+`pre-alpha-2` currently reads as a validated macOS ARM64 lean-baseline branch candidate with real operational evidence and with cross-platform work still deferred.
+
+---
+
+## Pre-Alpha 1 Context
+
+This section records the branch-contained validation evidence for `pre-alpha-1` on Thursday, July 30, 2026.
 
 Validation host:
 
