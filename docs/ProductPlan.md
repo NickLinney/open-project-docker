@@ -6,7 +6,7 @@
 - Project SID: NLSW-000003
 - Plan Date: Thursday, July 30, 2026
 - Current Lifecycle Phase: Pre-Alpha
-- Current Release Target: `pre-alpha-1`
+- Current Release Target: `pre-alpha-2`
 
 ## Product Intent
 
@@ -66,7 +66,7 @@ Alpha should begin only after `pre-alpha-2` confirms that:
 - validated Ollama feature path retained as learning artifact
 - MacBook Pro Apple Silicon local testing completion
 
-### Scope for `pre-alpha-2`
+### Active Scope for `pre-alpha-2`
 
 - fully dockerized OpenProject stack
 - persistent PostgreSQL-backed storage
