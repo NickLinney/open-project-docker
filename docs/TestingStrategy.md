@@ -4,7 +4,7 @@
 **SID:** NLSW-000003  
 **Document Class:** Project Document  
 **Status:** Active  
-**Version:** 0.1.0-alpha  
+**Version:** pre-alpha-1  
 **Effective Date:** Thursday, July 30, 2026  
 **Authority:** This document is a project-specific testing standard for NLSW-000003 and should be followed unless new evidence justifies a documented exception.
 
@@ -66,7 +66,7 @@ This testing strategy is designed to answer the following questions:
 5. Does the system behave correctly across configuration states?
 6. Do local LLM mode paths behave as designed?
 7. Can the system be recovered after expected operational events?
-8. Is the release evidence strong enough to support progression toward `0.1.0-alpha`?
+8. Is the release evidence strong enough to support progression toward `pre-alpha-1`?
 
 ---
 
@@ -795,4 +795,3 @@ The next sprint cycles should use this document directly to:
 - assign testing roles
 - gate release readiness
 - ensure no critical-path validation is forgotten
-

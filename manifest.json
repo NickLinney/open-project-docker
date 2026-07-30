@@ -2,12 +2,15 @@
   "project_id": "NLSW-000003",
   "name": "OpenProject Docker Stack",
   "lifecycle_phase": "pre-alpha",
-  "target_release": "0.1.0-alpha",
+  "target_release": "pre-alpha-1",
   "current_release_vehicle": "pre-alpha-1",
   "current_feature_vehicle": "feature/release-bootstrap",
   "repository_intent": "Canonical local-first OpenProject deployment reference",
   "supported_architectures": [
     "amd64",
+    "arm64"
+  ],
+  "validated_architectures": [
     "arm64"
   ],
   "components": {
@@ -38,5 +41,9 @@
     "openproject_url": "http://127.0.0.1:8080",
     "llm_model": "llama3:8b",
     "llm_mode_when_unspecified": "container"
+  },
+  "release_notes": {
+    "pre_alpha_1_intent": "Validated learning-artifact cutoff for the optional Ollama subset on the macOS ARM64 implementation",
+    "pre_alpha_2_intent": "Remove AI-related components and re-establish the lean OpenProject baseline before Alpha"
   }
 }

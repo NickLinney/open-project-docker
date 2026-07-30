@@ -7,12 +7,24 @@
 - Plan Date: 2026-07-29
 - Current Lifecycle Phase: Pre-Alpha
 - Current Release Vehicle: `pre-alpha-1`
+- Current Release Target: `pre-alpha-1`
 - Current Top-Level Feature Vehicle: `feature/release-bootstrap`
 - Repository Intent: Canonical, Docker-first, self-hosted OpenProject deployment reference
 
 ## Executive Objective
 
 Deliver a production-quality, fully dockerized OpenProject deployment repository that is portable, deterministic, security-conscious, and suitable as the NickLinney.Software reference implementation for self-hosted work management infrastructure.
+
+## Planning Reset
+
+On Thursday, July 30, 2026, the project determined that the Ollama integration path, while successfully implemented and validated, is not necessary for the correct end-state scope of `NLSW000003`.
+
+The planning response is:
+
+- complete `pre-alpha-1` as the governed learning-artifact release for the macOS ARM64 implementation
+- preserve the validated AI feature path for export and reuse elsewhere
+- plan `pre-alpha-2` as the cleanup release that removes all AI-related components and re-establishes the lean OpenProject-only product baseline
+- begin Alpha only after `pre-alpha-2` confirms the corrected product scope in code, testing, and documentation
 
 ## Success Criteria
 
@@ -56,6 +68,13 @@ Deliver a production-quality, fully dockerized OpenProject deployment repository
 - Dedicated repository SSH keys will be used for Git operations when pushing.
 - Early work should favor legible structure and reproducible bootstrap over rapid feature sprawl.
 
+## Source Control Evidence Rule
+
+- Dev work must be committed and pushed at each completed task boundary.
+- Local commits are implementation tooling; the GitHub repository is the auditable evidence record.
+- Every merge must be reviewed by another Dev when available, otherwise by the Release Manager, otherwise by the PM.
+- Release progression must pause if commit, push, or review discipline falls out of compliance until the evidence trail is corrected.
+
 ## Deliverables
 
 ### Repository Foundation
@@ -80,7 +99,7 @@ Deliver a production-quality, fully dockerized OpenProject deployment repository
 - Health-check and validation approach
 - Disaster recovery notes
 
-### LLM Runtime Foundation
+### Learning Artifact Foundation for `pre-alpha-1`
 
 - Default `llama3:8b` model behavior
 - Host Ollama wiring via `LOCAL_MODEL=`
@@ -133,7 +152,7 @@ The PM and Scrum Master participate across both cadences as the same project per
 - Scrum Master
   - owns testing cadence discipline, blocker surfacing, and stop-work enforcement where test governance is skipped
 - Release Manager
-  - owns release-gating interpretation, evidence sufficiency, and progression control toward `0.1.0-alpha`
+  - owns release-gating interpretation, evidence sufficiency, and progression control toward `pre-alpha-1`
 
 ## Milestones
 
@@ -168,12 +187,18 @@ The PM and Scrum Master participate across both cadences as the same project per
 - Document upgrade and disaster recovery flow
 - Validate stack behavior against intended bootstrap paths
 
-### Milestone 6: Dual-Cadence Alpha Evidence Closure
+### Milestone 6: Pre-Alpha 1 Evidence Closure and Learning Artifact Cutoff
 
 - Run a governed Development Team sprint cadence
 - Run a governed Testing Team sprint cadence
 - Validate restore, Git auth/push, and Ollama operating modes
-- Produce release-readiness evidence for `0.1.0-alpha`
+- Produce release-readiness evidence for `pre-alpha-1`
+
+### Milestone 7: Pre-Alpha 2 Lean Product Realignment
+
+- Remove Ollama and AI-related components from the product baseline
+- Preserve and re-test the full dockerized OpenProject application
+- Refresh documentation and release language to reflect the lean scope truthfully
 
 ## Initial Risks
 
@@ -200,7 +225,7 @@ These sprint cycles should prioritize:
 - governed testing discipline
 - release-readiness visibility
 
-Feature expansion not required for `0.1.0-alpha` readiness should remain out of scope until the current validation and evidence gaps are closed.
+Feature expansion not required for `pre-alpha-1` evidence closure or `pre-alpha-2` cleanup should remain out of scope until the current validation and evidence gaps are closed.
 
 ## Development Team Parallel Sprint Cadence
 
@@ -269,7 +294,7 @@ Close the engineering-side alpha-entry evidence gaps and support the Testing Tea
 
 #### Sprint Objective
 
-Convert validated technical evidence into release-ready operational and documentation alignment for `0.1.0-alpha` decision support.
+Convert validated technical evidence into release-ready operational and documentation alignment for `pre-alpha-1` decision support.
 
 #### Tasks and Subtasks
 
@@ -285,7 +310,7 @@ Convert validated technical evidence into release-ready operational and document
   - Subtask: Dev updates architecture documentation for validated LLM mode behavior.
   - Subtask: PM reviews documentation changes for operator clarity.
 
-- Task 3: Support creation of the `0.1.0-alpha` Release Readiness Checklist
+- Task 3: Support creation of the `pre-alpha-1` Release Readiness Checklist
   - Subtask: Release Manager drafts the checklist criteria.
   - Subtask: Dev maps technical validation evidence to checklist items.
   - Subtask: PM reviews missing evidence and unresolved risks.
@@ -354,7 +379,7 @@ Execute the first formal evidence-building testing cycle against the current Ope
 
 #### Sprint Objective
 
-Complete release-gating validation, documentation-path testing, and final evidence traceability for `0.1.0-alpha` readiness review.
+Complete release-gating validation, documentation-path testing, and final evidence traceability for `pre-alpha-1` readiness review.
 
 #### Tasks and Subtasks
 

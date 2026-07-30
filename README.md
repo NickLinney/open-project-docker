@@ -2,12 +2,14 @@
 
 NickLinney.Software reference repository for a local-first, Docker-based OpenProject deployment with governed operations, persistent PostgreSQL storage, and optional local Ollama support for repository-side automation.
 
+For `pre-alpha-1`, the optional Ollama subset is preserved as a validated learning artifact. It is not the intended long-term product baseline for `NLSW000003`; `pre-alpha-2` is planned to remove AI-related components and re-establish the lean OpenProject baseline.
+
 ## Status
 
 - Lifecycle phase: Pre-Alpha
 - Current release vehicle: `pre-alpha-1`
 - Current working branch: `feature/release-bootstrap`
-- Target milestone in this planning horizon: `0.1.0-alpha`
+- Target milestone in this planning horizon: `pre-alpha-1`
 
 ## Objectives
 
@@ -45,5 +47,6 @@ If `8080` is already in use on the host, set `PORT=127.0.0.1:<alternate-port>` i
 - OpenProject is configured for local-first access by default.
 - The default web endpoint is `http://127.0.0.1:8080`.
 - The optional container Ollama runtime stays on the internal Compose network so it can coexist with a host Ollama daemon already using `127.0.0.1:11434`.
+- `pre-alpha-1` preserves the validated Ollama feature path as a learning artifact and export-package input; it should not be mistaken for the long-term baseline scope of this project.
 - The optional proxy profile is documented but not required for first local bring-up.
 - The project lifecycle tracker is maintained outside the repository on purpose.
