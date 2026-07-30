@@ -1,0 +1,42 @@
+{
+  "project_id": "NLSW-000003",
+  "name": "OpenProject Docker Stack",
+  "lifecycle_phase": "pre-alpha",
+  "target_release": "0.1.0-alpha",
+  "current_release_vehicle": "pre-alpha-1",
+  "current_feature_vehicle": "feature/release-bootstrap",
+  "repository_intent": "Canonical local-first OpenProject deployment reference",
+  "supported_architectures": [
+    "amd64",
+    "arm64"
+  ],
+  "components": {
+    "openproject": {
+      "image": "openproject/openproject",
+      "tag": "17-slim"
+    },
+    "postgresql": {
+      "image": "postgres",
+      "tag": "17"
+    },
+    "memcached": {
+      "image": "memcached",
+      "tag": "latest"
+    },
+    "ollama": {
+      "image": "ollama/ollama",
+      "mode_default": "container",
+      "default_model": "llama3:8b"
+    }
+  },
+  "persistence": {
+    "database_volume": "pgdata",
+    "assets_volume": "opdata",
+    "ollama_volume": "ollama"
+  },
+  "defaults": {
+    "openproject_url": "http://127.0.0.1:8080",
+    "llm_model": "llama3:8b",
+    "llm_mode_when_unspecified": "container"
+  }
+}
