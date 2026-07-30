@@ -16,3 +16,4 @@ NLSW000003_id_ed25519_codex.pub
 tmp/
 logs/
 *.log
+backups/*.sql
