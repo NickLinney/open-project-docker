@@ -2,14 +2,14 @@
 
 NickLinney.Software reference repository for a local-first, Docker-based OpenProject deployment with governed operations and persistent PostgreSQL storage.
 
-The active `pre-alpha-2` release candidate is the lean OpenProject baseline for `NLSW000003`. The earlier Ollama subset remains preserved only as historical `pre-alpha-1` learning evidence.
+The active `pre-alpha-2` release branch carries the lean OpenProject baseline for `NLSW000003`. The earlier Ollama subset remains preserved only as historical `pre-alpha-1` learning evidence.
 
 ## Status
 
 - Lifecycle phase: Pre-Alpha
 - Current release target: `0.0.0-pre-alpha-2`
 - Current release vehicle: `pre-alpha-2`
-- Current working branch: `feature/pre-alpha-2-lean-baseline`
+- Release destination branch: `main`
 - Target milestone in this planning horizon: `pre-alpha-2`
 
 ## Objectives

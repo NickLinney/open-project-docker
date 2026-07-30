@@ -4,7 +4,7 @@
   "lifecycle_phase": "pre-alpha",
   "target_release": "pre-alpha-2",
   "current_release_vehicle": "pre-alpha-2",
-  "current_feature_vehicle": "feature/pre-alpha-2-lean-baseline",
+  "current_feature_vehicle": "pre-alpha-2",
   "repository_intent": "Canonical local-first OpenProject deployment reference",
   "supported_architectures": [
     "amd64",

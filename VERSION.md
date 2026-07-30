@@ -1,6 +1,6 @@
 # Version
 
-## Current Planned Release
+## Current Release Target
 
 - Target release: `0.0.0-pre-alpha-2`
 - Lifecycle phase: Pre-Alpha

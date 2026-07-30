@@ -3,7 +3,7 @@
 ## Context
 
 - Release target: `pre-alpha-2`
-- Source branch: `feature/pre-alpha-2-lean-baseline`
+- Active release branch: `pre-alpha-2`
 - Checklist date: Thursday, July 30, 2026
 - Purpose: decision-support checklist for promotion review, not a release declaration by itself
 
@@ -22,13 +22,13 @@
 - [x] Update workflow completed successfully
 - [x] Final runtime state confirmed without an active Ollama service
 - [x] Sprint-scoped removal inventory recorded
-- [ ] PR review, approval, and merge for `pre-alpha-2` completed
+- [x] PR review comment, merge-review artifact, and merge into `pre-alpha-2` completed
 - [ ] Release branch promotion and tag event completed
 - [ ] Linux runtime validation completed
 - [ ] AMD64 runtime validation completed
 
 ## Current Interpretation
 
-The branch is technically ready for governed review as a macOS ARM64 `pre-alpha-2` lean-baseline candidate.
+The release branch is technically ready for governed promotion to `main` as a macOS ARM64 `pre-alpha-2` lean-baseline candidate.
 
-It is not yet a completed release event because PR review, official promotion, and broader platform validation remain outstanding.
+It is not yet a completed release event because promotion to `main`, final post-promotion validation, tag creation, and broader platform validation remain outstanding.
